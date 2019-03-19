@@ -36,7 +36,7 @@ static int __init corrupter_init(void)
 
 static void __exit corrupter_exit(void)
 {
-	kmem_cache_destroy(corrupter_slab_cachep);
+	return;
 }
 
 module_init(corrupter_init);

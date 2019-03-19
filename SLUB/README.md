@@ -62,11 +62,11 @@ freelist -> ??? (obj2) -> ...
 
 4. free obj1
 
-##### TEST A-3c. free all allocated objects, and unload module
+##### TEST A-3c. free all allocated objects, and destroy the slab cache
 
 4. free obj1
 5. free obj0
-6. unload module
+6. destory the slab cache
 
 ## B. corrupt with memory underrun
 
@@ -133,11 +133,11 @@ freelist -> ??? (obj2) -> ...
 
 6. free obj1
 
-##### TEST B-3c. free all allocated objects, and unload module
+##### TEST B-3c. free all allocated objects, and destory the slab cache
 
 6. free obj1
 7. free obj0
-8. rmmod
+8. destory the slab cache
 
 # Test Results
 ## Red Hat Enterprise Linux 7

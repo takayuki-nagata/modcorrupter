@@ -13,7 +13,8 @@
 		kmem_cache_free(cachep, obj1);
 #define STEP_A3c \
 		kmem_cache_free(cachep, obj1); \
-		kmem_cache_free(cachep, obj0);
+		kmem_cache_free(cachep, obj0); \
+		kmem_cache_destroy(cachep);
 
 #define STEP_B1 \
 		obj0 = kmem_cache_alloc(cachep, GFP_KERNEL); \
@@ -26,4 +27,5 @@
 		obj2 = kmem_cache_alloc(cachep, GFP_KERNEL);
 #define STEP_B3c \
 		kmem_cache_free(cachep, obj1); \
-		kmem_cache_free(cachep, obj0);
+		kmem_cache_free(cachep, obj0); \
+		kmem_cache_destroy(cachep);
