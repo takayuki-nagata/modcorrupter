@@ -2,6 +2,13 @@
  * Copyright (c) 2019 Takayuki Nagata
  */
 
+#define STEP_02 \
+		obj0 = kmem_cache_alloc(cachep, GFP_KERNEL);
+#define STEP_03 \
+		kmem_cache_free(cachep, obj0);
+#define STEP_04 \
+		kmem_cache_destroy(cachep);
+
 #define STEP_A1 \
 		obj0 = kmem_cache_alloc(cachep, GFP_KERNEL); \
 		obj0->data[2*OBJ_SIZE-1] = 0x11;

@@ -1,3 +1,12 @@
+obj-m += kmod_corrupter_TEST-0-1.o
+obj-m += kmod_corrupter_TEST-0-2.o
+obj-m += kmod_corrupter_TEST-0-3.o
+obj-m += kmod_corrupter_TEST-0-4.o
+kmod_corrupter_TEST-0-1-objs := corrupter_main.o corrupter_TEST-0-1.o
+kmod_corrupter_TEST-0-2-objs := corrupter_main.o corrupter_TEST-0-2.o
+kmod_corrupter_TEST-0-3-objs := corrupter_main.o corrupter_TEST-0-3.o
+kmod_corrupter_TEST-0-4-objs := corrupter_main.o corrupter_TEST-0-4.o
+
 obj-m += kmod_corrupter_TEST-A-1.o
 obj-m += kmod_corrupter_TEST-A-2.o
 obj-m += kmod_corrupter_TEST-A-3a.o
