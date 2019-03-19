@@ -403,116 +403,124 @@ System Status: Panic
 ~~~
 crash> log
 [...]
-[  153.093119] general protection fault: 0000 [#1] SMP 
-[  153.093142] Modules linked in: kmod_corrupter_TEST_A_3c(POE-) macsec tcp_diag udp_diag inet_diag unix_diag af_packet_diag netlink_diag binfmt_misc ip6t_rpfilter ipt_REJECT nf_reject_ipv4 ip6t_REJECT nf_reject_ipv6 xt_conntrack ip_set nfnetlink ebtable_nat ebtable_broute bridge stp llc ip6table_nat nf_conntrack_ipv6 nf_defrag_ipv6 nf_nat_ipv6 ip6table_mangle ip6table_security ip6table_raw iptable_nat nf_conntrack_ipv4 nf_defrag_ipv4 nf_nat_ipv4 nf_nat nf_conntrack iptable_mangle iptable_security iptable_raw ebtable_filter ebtables ip6table_filter ip6_tables iptable_filter sunrpc iosf_mbi crc32_pclmul ppdev ghash_clmulni_intel aesni_intel lrw gf128mul glue_helper ablk_helper cryptd joydev pcspkr virtio_balloon sg parport_pc parport i2c_piix4 ip_tables xfs libcrc32c sr_mod cdrom virtio_blk virtio_console
-[  153.093416]  virtio_net ata_generic pata_acpi crct10dif_pclmul crct10dif_common crc32c_intel qxl drm_kms_helper serio_raw syscopyarea sysfillrect sysimgblt fb_sys_fops ttm drm floppy ata_piix libata virtio_pci virtio_ring virtio drm_panel_orientation_quirks dm_mirror dm_region_hash dm_log dm_mod
-[  153.093507] CPU: 0 PID: 5679 Comm: rmmod Kdump: loaded Tainted: P           OE  ------------   3.10.0-957.el7.x86_64 #1
-[  153.093532] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS ?-20180724_192412-buildhw-07.phx2.fedoraproject.org-1.fc29 04/01/2014
-[  153.093562] task: ffff9edd757a2080 ti: ffff9eddbbc98000 task.ti: ffff9eddbbc98000
-[  153.093580] RIP: 0010:[<ffffffffa7019fe4>]  [<ffffffffa7019fe4>] deactivate_slab+0xa4/0x3c0
-[  153.093604] RSP: 0018:ffff9eddbbc9bcc0  EFLAGS: 00010006
-[  153.093617] RAX: 00000000000001f8 RBX: fffffede0152c1c0 RCX: 0000000180080006
-[  153.093634] RDX: ffff9edd94b07200 RSI: fffffede0152c1c0 RDI: 0000000040020000
-[  153.093661] RBP: ffff9eddbbc9bd68 R08: ffff9edd94b07200 R09: 0000000180080006
-[  153.093678] R10: ffff9eddc2401500 R11: ffffffffa717551f R12: ffff9edd94b07200
-[  153.093695] R13: 11ff9edd94b07400 R14: ffff9eddbef8f840 R15: ffff9eddbcce7100
-[  153.093723] FS:  00007f01919ca740(0000) GS:ffff9eddc2a00000(0000) knlGS:0000000000000000
-[  153.093742] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-[  153.093756] CR2: 00007f0190e95390 CR3: 000000007caf0000 CR4: 00000000001606f0
-[  153.093777] Call Trace:
-[  153.093787]  [<ffffffffa6f2fd00>] ? cpu_stop_should_run+0x50/0x50
-[  153.093803]  [<ffffffffa7175465>] ? cpumask_next_and+0x35/0x50
-[  153.093820]  [<ffffffffa701a386>] flush_cpu_slab+0x36/0x60
-[  153.093835]  [<ffffffffa701a350>] ? __flush_cpu_slab+0x50/0x50
-[  153.093851]  [<ffffffffa6f118ae>] on_each_cpu_mask+0x4e/0x70
-[  153.093866]  [<ffffffffa7017400>] ? check_valid_pointer+0x80/0x80
-[  153.093881]  [<ffffffffa6f11994>] on_each_cpu_cond+0xc4/0x190
-[  153.093896]  [<ffffffffa701a350>] ? __flush_cpu_slab+0x50/0x50
-[  153.093912]  [<ffffffffa701e5a5>] kmem_cache_close+0x35/0x300
-[  153.093927]  [<ffffffffa6f3049f>] ? stop_cpus+0x3f/0x50
-[  153.093940]  [<ffffffffa6f13a30>] ? module_refcount+0xc0/0xc0
-[  153.093955]  [<ffffffffa701eb34>] __kmem_cache_shutdown+0x14/0x80
-[  153.093972]  [<ffffffffa6fdb8f0>] kmem_cache_destroy+0x60/0x130
-[  153.093989]  [<ffffffffc066b08b>] corrupter_exit+0x10/0xf85 [kmod_corrupter_TEST_A_3c]
-[  153.094008]  [<ffffffffa6f165de>] SyS_delete_module+0x19e/0x310
-[  153.094025]  [<ffffffffa7574ddb>] system_call_fastpath+0x22/0x27
-[  153.094039] Code: de 48 89 4c 24 58 66 83 6c 24 58 01 4c 8b 4c 24 58 e8 31 f4 ff ff 84 c0 74 cd 4d 85 ed 0f 84 a6 02 00 00 49 63 47 20 48 8b 53 10 <49> 8b 4c 05 00 48 85 c9 74 0b 4d 89 ec 49 89 cd eb b2 4d 89 e5 
-[  153.094152] RIP  [<ffffffffa7019fe4>] deactivate_slab+0xa4/0x3c0
-[  153.094869]  RSP <ffff9eddbbc9bcc0>
+[  427.657337] general protection fault: 0000 [#1] SMP 
+[  427.657359] Modules linked in: kmod_corrupter_TEST_A_3c(POE+) macsec tcp_diag udp_diag inet_diag unix_diag af_packet_diag netlink_diag binfmt_misc ip6t_rpfilter ipt_REJECT nf_reject_ipv4 ip6t_REJECT nf_reject_ipv6 xt_conntrack ip_set nfnetlink ebtable_nat ebtable_broute bridge stp llc ip6table_nat nf_conntrack_ipv6 nf_defrag_ipv6 nf_nat_ipv6 ip6table_mangle ip6table_security ip6table_raw iptable_nat nf_conntrack_ipv4 nf_defrag_ipv4 nf_nat_ipv4 nf_nat nf_conntrack iptable_mangle iptable_security iptable_raw ebtable_filter ebtables ip6table_filter ip6_tables iptable_filter sunrpc iosf_mbi crc32_pclmul ppdev ghash_clmulni_intel aesni_intel lrw gf128mul glue_helper ablk_helper cryptd joydev pcspkr virtio_balloon sg parport_pc parport i2c_piix4 ip_tables xfs libcrc32c sr_mod cdrom virtio_blk virtio_console
+[  427.657604]  virtio_net ata_generic pata_acpi crct10dif_pclmul crct10dif_common crc32c_intel qxl drm_kms_helper serio_raw syscopyarea sysfillrect sysimgblt fb_sys_fops ttm ata_piix floppy drm libata drm_panel_orientation_quirks virtio_pci virtio_ring virtio dm_mirror dm_region_hash dm_log dm_mod
+[  427.657693] CPU: 0 PID: 5934 Comm: insmod Kdump: loaded Tainted: P           OE  ------------   3.10.0-957.el7.x86_64 #1
+[  427.657718] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS ?-20180724_192412-buildhw-07.phx2.fedoraproject.org-1.fc29 04/01/2014
+[  427.657748] task: ffff96a49b766180 ti: ffff96a476638000 task.ti: ffff96a476638000
+[  427.657766] RIP: 0010:[<ffffffff9c819fe4>]  [<ffffffff9c819fe4>] deactivate_slab+0xa4/0x3c0
+[  427.657790] RSP: 0018:ffff96a47663bb10  EFLAGS: 00010006
+[  427.657803] RAX: 00000000000001f8 RBX: ffffeceac1589180 RCX: 0000000180080006
+[  427.657820] RDX: ffff96a496246200 RSI: ffffeceac1589180 RDI: 0000000040020000
+[  427.657837] RBP: ffff96a47663bbb8 R08: ffff96a496246200 R09: 0000000180080006
+[  427.657854] R10: ffff96a4c2401500 R11: ffff96a476335400 R12: ffff96a496246200
+[  427.657871] R13: 11ff96a496246400 R14: ffff96a4bef8f840 R15: ffff96a4bcf39100
+[  427.657888] FS:  00007f465bc4f740(0000) GS:ffff96a4c2a00000(0000) knlGS:0000000000000000
+[  427.657908] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  427.657922] CR2: 000000000041d458 CR3: 0000000035ce0000 CR4: 00000000001606f0
+[  427.657941] Call Trace:
+[  427.657952]  [<ffffffff9c975465>] ? cpumask_next_and+0x35/0x50
+[  427.657968]  [<ffffffff9c81a386>] flush_cpu_slab+0x36/0x60
+[  427.657982]  [<ffffffff9c81a350>] ? __flush_cpu_slab+0x50/0x50
+[  427.657998]  [<ffffffff9c7118ae>] on_each_cpu_mask+0x4e/0x70
+[  427.658013]  [<ffffffff9c817400>] ? check_valid_pointer+0x80/0x80
+[  427.658028]  [<ffffffff9c711994>] on_each_cpu_cond+0xc4/0x190
+[  427.658044]  [<ffffffff9c81a350>] ? __flush_cpu_slab+0x50/0x50
+[  427.658062]  [<ffffffffc00f4000>] ? 0xffffffffc00f3fff
+[  427.658076]  [<ffffffff9c81e5a5>] kmem_cache_close+0x35/0x300
+[  427.658092]  [<ffffffffc056e049>] ? corrupter_slab_doit+0x19/0x53 [kmod_corrupter_TEST_A_3c]
+[  427.658114]  [<ffffffffc00f4000>] ? 0xffffffffc00f3fff
+[  427.658128]  [<ffffffff9c81eb34>] __kmem_cache_shutdown+0x14/0x80
+[  427.658144]  [<ffffffff9c7db8f0>] kmem_cache_destroy+0x60/0x130
+[  427.658160]  [<ffffffffc056e07e>] corrupter_slab_doit+0x4e/0x53 [kmod_corrupter_TEST_A_3c]
+[  427.658208]  [<ffffffffc00f4037>] corrupter_init+0x37/0x1000 [kmod_corrupter_TEST_A_3c]
+[  427.658239]  [<ffffffff9c60210a>] do_one_initcall+0xba/0x240
+[  427.658254]  [<ffffffff9c718f8c>] load_module+0x272c/0x2bc0
+[  427.658270]  [<ffffffff9c9a3030>] ? ddebug_proc_write+0x100/0x100
+[  427.658286]  [<ffffffff9c714b13>] ? copy_module_from_fd.isra.44+0x53/0x150
+[  427.658932]  [<ffffffff9c719606>] SyS_finit_module+0xa6/0xd0
+[  427.659606]  [<ffffffff9cd74ddb>] system_call_fastpath+0x22/0x27
+[  427.660270] Code: de 48 89 4c 24 58 66 83 6c 24 58 01 4c 8b 4c 24 58 e8 31 f4 ff ff 84 c0 74 cd 4d 85 ed 0f 84 a6 02 00 00 49 63 47 20 48 8b 53 10 <49> 8b 4c 05 00 48 85 c9 74 0b 4d 89 ec 49 89 cd eb b2 4d 89 e5 
+[  427.661745] RIP  [<ffffffff9c819fe4>] deactivate_slab+0xa4/0x3c0
+[  427.662431]  RSP <ffff96a47663bb10>
 ~~~
 
 ~~~
 crash> bt
-PID: 5679   TASK: ffff9edd757a2080  CPU: 0   COMMAND: "rmmod"
- #0 [ffff9eddbbc9ba38] machine_kexec at ffffffffa6e63674
- #1 [ffff9eddbbc9ba98] __crash_kexec at ffffffffa6f1ce12
- #2 [ffff9eddbbc9bb68] crash_kexec at ffffffffa6f1cf00
- #3 [ffff9eddbbc9bb80] oops_end at ffffffffa756c758
- #4 [ffff9eddbbc9bba8] die at ffffffffa6e2f95b
- #5 [ffff9eddbbc9bbd8] do_general_protection at ffffffffa756c052
- #6 [ffff9eddbbc9bc10] general_protection at ffffffffa756b6f8
+PID: 5934   TASK: ffff96a49b766180  CPU: 0   COMMAND: "insmod"
+ #0 [ffff96a47663b888] machine_kexec at ffffffff9c663674
+ #1 [ffff96a47663b8e8] __crash_kexec at ffffffff9c71ce12
+ #2 [ffff96a47663b9b8] crash_kexec at ffffffff9c71cf00
+ #3 [ffff96a47663b9d0] oops_end at ffffffff9cd6c758
+ #4 [ffff96a47663b9f8] die at ffffffff9c62f95b
+ #5 [ffff96a47663ba28] do_general_protection at ffffffff9cd6c052
+ #6 [ffff96a47663ba60] general_protection at ffffffff9cd6b6f8
     [exception RIP: deactivate_slab+164]
-    RIP: ffffffffa7019fe4  RSP: ffff9eddbbc9bcc0  RFLAGS: 00010006
-    RAX: 00000000000001f8  RBX: fffffede0152c1c0  RCX: 0000000180080006
-    RDX: ffff9edd94b07200  RSI: fffffede0152c1c0  RDI: 0000000040020000
-    RBP: ffff9eddbbc9bd68   R8: ffff9edd94b07200   R9: 0000000180080006
-    R10: ffff9eddc2401500  R11: ffffffffa717551f  R12: ffff9edd94b07200
-    R13: 11ff9edd94b07400  R14: ffff9eddbef8f840  R15: ffff9eddbcce7100
+    RIP: ffffffff9c819fe4  RSP: ffff96a47663bb10  RFLAGS: 00010006
+    RAX: 00000000000001f8  RBX: ffffeceac1589180  RCX: 0000000180080006
+    RDX: ffff96a496246200  RSI: ffffeceac1589180  RDI: 0000000040020000
+    RBP: ffff96a47663bbb8   R8: ffff96a496246200   R9: 0000000180080006
+    R10: ffff96a4c2401500  R11: ffff96a476335400  R12: ffff96a496246200
+    R13: 11ff96a496246400  R14: ffff96a4bef8f840  R15: ffff96a4bcf39100
     ORIG_RAX: ffffffffffffffff  CS: 0010  SS: 0018
- #7 [ffff9eddbbc9bd70] flush_cpu_slab at ffffffffa701a386
- #8 [ffff9eddbbc9bd90] on_each_cpu_mask at ffffffffa6f118ae
- #9 [ffff9eddbbc9bdc0] on_each_cpu_cond at ffffffffa6f11994
-#10 [ffff9eddbbc9be18] kmem_cache_close at ffffffffa701e5a5
-#11 [ffff9eddbbc9be78] __kmem_cache_shutdown at ffffffffa701eb34
-#12 [ffff9eddbbc9be98] kmem_cache_destroy at ffffffffa6fdb8f0
-#13 [ffff9eddbbc9beb8] cleanup_module at ffffffffc066b08b [kmod_corrupter_TEST_A_3c]
-#14 [ffff9eddbbc9bec8] sys_delete_module at ffffffffa6f165de
-#15 [ffff9eddbbc9bf50] system_call_fastpath at ffffffffa7574ddb
-    RIP: 00007f0190e95397  RSP: 00007ffc6c5db0c8  RFLAGS: 00010202
-    RAX: 00000000000000b0  RBX: 00000000025f7270  RCX: 0000000000000000
-    RDX: 00007f0190f09b20  RSI: 0000000000000800  RDI: 00000000025f72d8
-    RBP: 0000000000000000   R8: 00007f019115e060   R9: 00007f0190f09b20
-    R10: 00007ffc6c5dab20  R11: 0000000000000202  R12: 00007ffc6c5dc7dd
-    R13: 0000000000000000  R14: 00000000025f7270  R15: 00000000025f7010
-    ORIG_RAX: 00000000000000b0  CS: 0033  SS: 002b
+ #7 [ffff96a47663bbc0] flush_cpu_slab at ffffffff9c81a386
+ #8 [ffff96a47663bbe0] on_each_cpu_mask at ffffffff9c7118ae
+ #9 [ffff96a47663bc10] on_each_cpu_cond at ffffffff9c711994
+#10 [ffff96a47663bc68] kmem_cache_close at ffffffff9c81e5a5
+#11 [ffff96a47663bcc8] __kmem_cache_shutdown at ffffffff9c81eb34
+#12 [ffff96a47663bce8] kmem_cache_destroy at ffffffff9c7db8f0
+#13 [ffff96a47663bd08] corrupter_slab_doit at ffffffffc056e07e [kmod_corrupter_TEST_A_3c]
+#14 [ffff96a47663bd28] init_module at ffffffffc00f4037 [kmod_corrupter_TEST_A_3c]
+#15 [ffff96a47663bd38] do_one_initcall at ffffffff9c60210a
+#16 [ffff96a47663bd68] load_module at ffffffff9c718f8c
+#17 [ffff96a47663beb8] sys_finit_module at ffffffff9c719606
+#18 [ffff96a47663bf50] system_call_fastpath at ffffffff9cd74ddb
+    RIP: 00007f465b1141c9  RSP: 00007ffdc825b2f8  RFLAGS: 00010203
+    RAX: 0000000000000139  RBX: 00000000015972b0  RCX: 00007f465b185fd0
+    RDX: 0000000000000000  RSI: 000000000041a94e  RDI: 0000000000000003
+    RBP: 000000000041a94e   R8: 0000000000000000   R9: 00007ffdc825b508
+    R10: 0000000000000003  R11: 0000000000000202  R12: 0000000000000000
+    R13: 0000000001597270  R14: 0000000000000000  R15: 0000000000000000
+    ORIG_RAX: 0000000000000139  CS: 0033  SS: 002b
 ~~~
 
 ~~~
 crash> dis -l deactivate_slab+164
 /usr/src/debug/kernel-3.10.0-957.el7/linux-3.10.0-957.el7.x86_64/mm/slub.c: 241
-0xffffffffa7019fe4 <deactivate_slab+164>:       mov    0x0(%r13,%rax,1),%rcx
+0xffffffff9c819fe4 <deactivate_slab+164>:       mov    0x0(%r13,%rax,1),%rcx
 ~~~
 
 ~~~
 crash> kmem -s | head -n3
 CACHE            NAME                 OBJSIZE  ALLOCATED     TOTAL  SLABS  SSIZE
-ffff9eddbcce7000 nf_conntrack_ffffffffa7b11640 312    31        48      4     4k
-ffff9edd7647ff00 rpc_inode_cache          624         13        24      2     8k
+ffff96a4bcf39000 nf_conntrack_ffffffff9d311640 312    20        48      4     4k
+ffff96a47647ff00 rpc_inode_cache          624         13        24      2     8k
 ~~~
 
 ~~~
-crash> struct kmem_cache.cpu_slab ffff9eddbcce7100
-  cpu_slab = 0x3d3a3d201080
+crash> struct kmem_cache.cpu_slab ffff96a4bcf39100
+  cpu_slab = 0x2b777d201070
 ~~~
 
 ~~~
-crash> struct kmem_cache_cpu.freelist 0x3d3a3d201080:0
-[0]: ffffdc17ffc01080
-  freelist = 0xffff9edd94b07000
+crash> struct kmem_cache_cpu.freelist 0x2b777d201070:0
+[0]: ffffc21c3fc01070
+  freelist = 0xffff96a496246000
 ~~~
 
 ~~~
-crash> rd -x 0xffff9edd94b07000 512
-ffff9edd94b07000:  8888888888888888 8888888888888888 
+crash> rd -x 0xffff96a496246000 512
+ffff96a496246000:  8888888888888888 8888888888888888 
 [...]
-ffff9edd94b071f0:  8888888888888888 0000000000000000 
-ffff9edd94b07200:  8888888888888888 8888888888888888 
+ffff96a4962461f0:  8888888888888888 0000000000000000 
+ffff96a496246200:  8888888888888888 8888888888888888 
 [...]
-ffff9edd94b073f0:  8888888888888888 ffff9edd94b07000 
-ffff9edd94b07400:  8888888888888888 8888888888888888 
+ffff96a4962463f0:  8888888888888888 ffff96a496246000 
+ffff96a496246400:  8888888888888888 8888888888888888 
 [...]
-ffff9edd94b075f0:  8888888888888888 ffff9edd94b07600 
-ffff9edd94b07600:  8888888888888888 8888888888888888 
+ffff96a4962465f0:  8888888888888888 ffff96a496246600 
+ffff96a496246600:  8888888888888888 8888888888888888 
 [...]
 ~~~
 
