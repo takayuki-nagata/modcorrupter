@@ -4,17 +4,25 @@
 
 0. create corrupter_slab_cache with a constructor which fills all objects with 0x88.
 
-### TEST 0-2. alloc object
+### TEST 0-2. alloc 1st object
 
 1. alloc obj0.
 
-### TEST 0-3. free object
+### TEST 0-3. alloc 2nd object
 
-2. free obj0.
+2. alloc obj1.
 
-### TEST 0-4. destroy slab cache
+### TEST 0-4. free the 1st object
 
-3. destrocy slab cache.
+3. free obj0.
+
+### TEST 0-5. free all objects
+
+4. free obj1.
+
+### TEST 0-6. destroy slab cache
+
+5. destrocy slab cache.
 
 ## A. corrupt with memory overrun
 
@@ -691,3 +699,5 @@ ffff96a4962465f0:  8888888888888888 ffff96a496246600
 ffff96a496246600:  8888888888888888 8888888888888888 
 [...]
 ~~~
+
+## Red Hat Enterprise Linux 7 with slub_debug=F
