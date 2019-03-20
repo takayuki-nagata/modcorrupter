@@ -1,9 +1,9 @@
 ccflags-y := -I$(PWD)
-obj-m += kmod_corrupter_TEST-0-1.o
-obj-m += kmod_corrupter_TEST-0-2.o
-obj-m += kmod_corrupter_TEST-0-3.o
-obj-m += kmod_corrupter_TEST-0-4.o
-kmod_corrupter_TEST-0-1-objs := ../corrupter_main.o corrupter_TEST-0-1.o
-kmod_corrupter_TEST-0-2-objs := ../corrupter_main.o corrupter_TEST-0-2.o
-kmod_corrupter_TEST-0-3-objs := ../corrupter_main.o corrupter_TEST-0-3.o
-kmod_corrupter_TEST-0-4-objs := ../corrupter_main.o corrupter_TEST-0-4.o
+obj-m += corrupter_TEST-0-1.o
+obj-m += corrupter_TEST-0-2.o
+obj-m += corrupter_TEST-0-3.o
+obj-m += corrupter_TEST-0-4.o
+corrupter_TEST-0-1-objs := ../corrupter_main.o TEST-0-1.o
+corrupter_TEST-0-2-objs := ../corrupter_main.o TEST-0-2.o
+corrupter_TEST-0-3-objs := ../corrupter_main.o TEST-0-3.o
+corrupter_TEST-0-4-objs := ../corrupter_main.o TEST-0-4.o
