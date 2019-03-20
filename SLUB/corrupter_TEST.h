@@ -5,8 +5,12 @@
 #define STEP_02 \
 		obj0 = kmem_cache_alloc(cachep, GFP_KERNEL);
 #define STEP_03 \
-		kmem_cache_free(cachep, obj0);
+		obj1 = kmem_cache_alloc(cachep, GFP_KERNEL);
 #define STEP_04 \
+		kmem_cache_free(cachep, obj0);
+#define STEP_05 \
+		kmem_cache_free(cachep, obj1);
+#define STEP_06 \
 		kmem_cache_destroy(cachep);
 
 #define STEP_A1 \
