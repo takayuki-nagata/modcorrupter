@@ -8,9 +8,10 @@
 #include "corrupter.h"
 #include "STEP.h"
 
+static struct corrupter_obj *obj0, *obj1, *obj2;
+
 void corrupter_slab_doit(struct kmem_cache *cachep)
 {
-	struct corrupter_obj *obj0, *obj1, *obj2;
 	obj0 = obj1 = obj2 = NULL;
 
 	STEP_01
@@ -18,4 +19,9 @@ void corrupter_slab_doit(struct kmem_cache *cachep)
 	STEP_03
 	STEP_04
 	STEP_05
+}
+
+int corrupter_slab_cleanup(struct kmem_cache *cachep)
+{
+        return 0;
 }
