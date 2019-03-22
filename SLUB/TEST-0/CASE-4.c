@@ -13,7 +13,7 @@ void corrupter_slab_doit(struct kmem_cache *cachep)
 	struct corrupter_obj *obj0, *obj1, *obj2;
 	obj0 = obj1 = obj2 = NULL;
 
+	STEP_01
 	STEP_02
 	STEP_03
-	STEP_04
 }
