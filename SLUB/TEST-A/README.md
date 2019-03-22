@@ -1,5 +1,6 @@
-# Test Steps
-## A. corrupt with memory overrun
+# Test Cases and Steps
+
+Corrupt slab page with memory overrun.
 
 ~~~
 memory overrun
@@ -9,7 +10,7 @@ memory overrun
 +----+---+----+---+----+---+-
 ~~~
 
-### TEST A-1. corrupt fp of free object with memory overrun
+## TEST-A_CASE-1: after corrupting fp of free object with memory overrun
 
 1. alloc obj0.
 2. corrupt fp1 with memory overrun using obj0.
@@ -38,7 +39,7 @@ freelist -> obj1 -> ??? (obj2) -> ...
  ...
 ~~~
 
-#### TEST A-2. corrupt freelist with allocating new object
+## TEST-A_CASE-2: after corrupting freelist with allocating new object
 
 3. alloc obj1
 
@@ -54,15 +55,15 @@ freelist -> ??? (obj2) -> ...
  ...
 ~~~
 
-##### TEST A-3a. use corrupted freelist with allocating new object
+## TEST-A_CASE-3a: after using corrupted freelist with allocating new object
 
 4. alloc obj2
 
-##### TEST A-3b. use corrupted freelist with freeing allocated object
+## TEST-A_CASE-3b: after using corrupted freelist with freeing allocated object
 
 4. free obj1
 
-##### TEST A-3c. free all allocated objects, and destroy the slab cache
+## TEST-A_CASE-3c: after freeing all allocated objects, and destroy the slab cache
 
 4. free obj1
 5. free obj0
@@ -70,7 +71,7 @@ freelist -> ??? (obj2) -> ...
 
 # Test Results
 ## Red Hat Enterprise Linux 7
-### TEST A-1
+### TEST-A_CASE-1: after corrupting fp of free object with memory overrun
 
 System Status: Operational
 
@@ -115,7 +116,7 @@ ffff9ef7be25f600:  8888888888888888 8888888888888888
 [...]
 ~~~
 
-### TEST A-2
+### TEST-A_CASE-2: after corrupting freelist with allocating new object
 
 System Status: Operational
 
@@ -160,7 +161,7 @@ ffff8aa23c68a600:  8888888888888888 8888888888888888
 [...]
 ~~~
 
-### TEST A-3a
+### TEST-A_CASE-3a: after using corrupted freelist with allocating new object
 
 System Status: Panic
 
@@ -280,7 +281,7 @@ ffff9ce8fc7a9600:  8888888888888888 8888888888888888
 [...]
 ~~~
 
-### TEST A-3b
+### TEST-A_CASE-3b: after using corrupted freelist with freeing allocated object
 
 System Status: Operational
 
@@ -325,7 +326,7 @@ ffff8c3bd5756600:  8888888888888888 8888888888888888
 [...]
 ~~~
 
-### TEST A-3c
+### TEST-A_CASE-3c: after freeing all allocated objects, and destroy the slab cache
 
 System Status: Panic
 
