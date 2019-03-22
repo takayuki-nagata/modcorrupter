@@ -36,6 +36,8 @@ static int __init corrupter_init(void)
 
 static void __exit corrupter_exit(void)
 {
+	if(!corrupter_slab_cleanup(corrupter_slab_cachep))
+		kmem_cache_destroy(corrupter_slab_cachep);
 	return;
 }
 

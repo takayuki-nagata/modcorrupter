@@ -13,5 +13,6 @@ struct corrupter_obj
 };
 
 extern void corrupter_slab_doit(struct kmem_cache* cachep);
+extern int corrupter_slab_cleanup(struct kmem_cache* cachep);
 
 #endif /* _CORRUPTER_H */

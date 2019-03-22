@@ -6,13 +6,19 @@
 
 #include <linux/slab.h>
 #include "corrupter.h"
-#include "corrupter_TEST.h"
+#include "STEP.h"
+
+static struct corrupter_obj *obj0, *obj1, *obj2;
 
 void corrupter_slab_doit(struct kmem_cache *cachep)
 {
-	struct corrupter_obj *obj0, *obj1, *obj2;
 	obj0 = obj1 = obj2 = NULL;
 
 	STEP_B1;
 	STEP_B2;
+}
+
+int corrupter_slab_cleanup(struct kmem_cache *cachep)
+{
+        return -1;
 }
