@@ -1,7 +1,7 @@
 /* For testing memory corruption.
  * Copyright (c) 2019 Takayuki Nagata
  *
- * TEST 0-4: monitor right behavior in freeing the 1st object
+ * TEST 0-4: monitor right behavior in updating contents of 1st object
  */
 
 #include <linux/slab.h>

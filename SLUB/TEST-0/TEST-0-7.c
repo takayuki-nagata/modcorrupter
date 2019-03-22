@@ -1,7 +1,7 @@
 /* For testing memory corruption.
  * Copyright (c) 2019 Takayuki Nagata
  *
- * TEST 0-5: monitor right behavior in freeing the 1st object
+ * TEST 0-7: monitor right behavior in destroying object
  */
 
 #include <linux/slab.h>
@@ -17,4 +17,6 @@ void corrupter_slab_doit(struct kmem_cache *cachep)
 	STEP_03
 	STEP_04
 	STEP_05
+	STEP_06
+	STEP_07
 }

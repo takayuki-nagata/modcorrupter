@@ -1,7 +1,7 @@
 /* For testing memory corruption.
  * Copyright (c) 2019 Takayuki Nagata
  *
- * TEST 0-6: monitor right behavior in destroying object
+ * TEST 0-6: monitor right behavior in freeing all objects
  */
 
 #include <linux/slab.h>

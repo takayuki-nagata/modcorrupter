@@ -12,17 +12,21 @@
 
 2. alloc obj1.
 
-### TEST 0-4. free the 1st object
+### TEST 0-4. update contents of the 1st object
 
-3. free obj0.
+3. update contents of obj0.
 
-### TEST 0-5. free all objects
+### TEST 0-5. free the 1st object
 
-4. free obj1.
+4. free obj0.
 
-### TEST 0-6. destroy slab cache
+### TEST 0-6. free all objects
 
-5. destrocy slab cache.
+5. free obj1.
+
+### TEST 0-7. destroy slab cache
+
+6. destrocy slab cache.
 
 ## A. corrupt with memory overrun
 
