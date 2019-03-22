@@ -1,5 +1,6 @@
-# Test Steps
-## B. corrupt with memory underrun
+# Test Cases and Steps
+
+Corrupt Slab page with memory underrun.
 
 ~~~
      underrun
@@ -9,7 +10,7 @@
 +----+---+----+---+----+---+-
 ~~~
 
-### TEST B-1. corrupt fp of free object with memory underrun
+## TEST-B_CASE-1: after corrupting fp of free object with memory underrun
 
 1. alloc obj0
 2. alloc obj1
@@ -40,7 +41,7 @@ freelist -> obj0 -> ??? (obj2) -> ...
  ...
 ~~~
 
-#### TEST B-2. corrupt freelist with allocating new object
+## TEST-B_CASE-2: after corrupting freelist with allocating new object
 
 5. alloc obj0
 
@@ -56,15 +57,15 @@ freelist -> ??? (obj2) -> ...
  ...
 ~~~
 
-##### TEST B-3a. use corrupted freelist with allocating new object
+## TEST-B_CASE-3a: after using corrupted freelist with allocating new object
 
 6. alloc obj2
 
-##### TEST B-3b. use corrupted freelist with freeing existing object
+## TEST-B_CASE-3b: after using corrupted freelist with freeing existing object
 
 6. free obj1
 
-##### TEST B-3c. free all allocated objects, and destory the slab cache
+## TEST-B_CASE-3c: after freeing all allocated objects, and destory the slab cache
 
 6. free obj1
 7. free obj0
