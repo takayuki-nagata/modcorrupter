@@ -4,7 +4,7 @@ Corrupt slab page with memory overrun.
 
 ~~~
 memory overrun
-+-------------->
+----------------->
 +----+---+----+---+----+---+-
 |obj0|fp0|obj1|fp1|obj2|fp2|...
 +----+---+----+---+----+---+-

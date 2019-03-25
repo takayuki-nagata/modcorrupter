@@ -6,7 +6,12 @@
 		obj0 = kmem_cache_alloc(cachep, GFP_KERNEL); \
 		obj1 = kmem_cache_alloc(cachep, GFP_KERNEL); \
 		kmem_cache_free(cachep, obj0); \
-		obj1->data[-1] = 0x11;
+		{ \
+			int i = DATA_SIZE-1; \
+			do{ \
+				obj1->data[i] = 0x11; \
+			}while (i-- >= 0); \
+		}
 #define STEP_B2 \
 		obj0 = kmem_cache_alloc(cachep, GFP_KERNEL);
 #define STEP_B3a \
