@@ -124,6 +124,9 @@ ffff93ab2d139600:  8888888888888888 8888888888888888
 ~~~
 
 - System status: operational
+- `freelist` points the 2nd object due to the 1st object is allocated.
+- Free pointers of the 1st and 2nd obects are corrupted.
+- `crash` tool shows that objecs other than the 2nd object is allocated due to the free ponter of the 2nd object is corrupted.
 
 ### TEST-A_CASE-2: after corrupting freelist with allocating new object
 
@@ -177,6 +180,7 @@ ffff9848bc69e600:  8888888888888888 8888888888888888
 ~~~
 
 - System status: operational
+- `freelist` is updated with the corrupted free pointer.
 
 ### TEST-A_CASE-3a: after using corrupted freelist with allocating new object
 
@@ -228,9 +232,11 @@ PID: 4021   TASK: ffff8d3dfcab8000  CPU: 0   COMMAND: "insmod"
     [exception RIP: kmem_cache_alloc+116]
     RIP: ffffffff9a81bcf4  RSP: ffff8d3dfda67cd8  RFLAGS: 00010282
     RAX: 00000000000001f8  RBX: ffff8d3dfcd3e100  RCX: 0000000000000003
+         ~~~~~~~~~~~~~~~~
     RDX: 0000000000000002  RSI: 00000000000000d0  RDI: ffff8d3dfcd3e100
     RBP: ffff8d3dfda67d08   R8: 00002f82bd201070   R9: ffffffffc08730aa
     R10: 0000000000000000  R11: fffffffffffffff6  R12: ff118d11fc11a411
+                                                       ~~~~~~~~~~~~~~~~
     R13: 00000000000000d0  R14: ffff8d3dfcd3e100  R15: ffff8d3dfcd3e100
     ORIG_RAX: ffffffffffffffff  CS: 0010  SS: 0018
  #7 [ffff8d3dfda67d10] corrupter_slab_doit at ffffffffc08730aa [corrupter_TEST_A_CASE_3a]
@@ -303,6 +309,7 @@ ffff8d3dfc62a600:  8888888888888888 8888888888888888
 ~~~
 
 - System status: kernel panic
+- Kernel panic occurs due to the corrupted `freelist` + 504 is derefferenced in `get_freepointer()` inlined at `kmem_cache_alloc()`.
 
 ### TEST-A_CASE-3b: after using corrupted freelist with freeing allocated object
 
@@ -337,6 +344,7 @@ NODE 0 FULL:
 ~~~
 crash> struct kmem_cache_cpu.freelist ffffcb9d7fc010b0
   freelist = 0xffff99c63c663200
+               ~~~~~~~~~~~~~~~~
 ~~~
 
 ~~~
@@ -355,6 +363,7 @@ ffff99c63c663600:  8888888888888888 8888888888888888
 ~~~
 
 - System status: operational
+- `freelist` points the 2nd object, and is is a correct address.
 
 ### TEST-A_CASE-3c: after freeing all allocated objects, and destroy the slab cache
 
@@ -416,10 +425,12 @@ PID: 4039   TASK: ffff9612766cc100  CPU: 0   COMMAND: "insmod"
     [exception RIP: deactivate_slab+164]
     RIP: ffffffff8ba19fe4  RSP: ffff9612bcd6bb10  RFLAGS: 00010086
     RAX: 00000000000001f8  RBX: ffffe83ac1f19840  RCX: 0000000180080006
+         ~~~~~~~~~~~~~~~~
     RDX: ffff9612bc661200  RSI: ffffe83ac1f19840  RDI: 0000000040020000
     RBP: ffff9612bcd6bbc0   R8: ffff9612bc661200   R9: 0000000180080006
     R10: ffff9612c2401500  R11: ffffffff8bb7551f  R12: ffff9612bc661200
     R13: ff119611bc111411  R14: ffff9612bef8f840  R15: ffff9612bccd6100
+         ~~~~~~~~~~~~~~~~
     ORIG_RAX: ffffffffffffffff  CS: 0010  SS: 0018
  #7 [ffff9612bcd6bbc8] flush_cpu_slab at ffffffff8ba1a386
  #8 [ffff9612bcd6bbe8] on_each_cpu_mask at ffffffff8b9118ae
@@ -459,6 +470,7 @@ crash> struct kmem_cache.cpu_slab ffff9612bccd6100
 crash> struct kmem_cache_cpu.freelist 0x2edc7d2010a0:0
 [0]: ffffc4ef3fc010a0
   freelist = 0xffff9612bc661000
+             ~~~~~~~~~~~~~~~~~~
 ~~~
 
 ~~~
@@ -466,9 +478,11 @@ crash> rd -x 0xffff9612bc661000 512
 ffff9612bc661000:  8811881188118811 8811881188118811 
 [...]
 ffff9612bc6611f0:  8811881188118811 0000000000000000 
+                                    ~~~~~~~~~~~~~~~~
 ffff9612bc661200:  8811881188118811 8811881188118811 
 [...]
 ffff9612bc6613f0:  8811881188118811 ffff9612bc661000 
+                                    ~~~~~~~~~~~~~~~~
 ffff9612bc661400:  8888888888888888 8888888888888888 
 [...]
 ffff9612bc6615f0:  8888888888888888 ffff9612bc661600 
@@ -477,3 +491,7 @@ ffff9612bc661600:  8888888888888888 8888888888888888
 ~~~
 
 - System status: kernel panic
+- `freelist` points the 1st object due to the all objects are freed.
+- Free pointer of the 1st object is updated with NULL.
+- Free pointer of the 2nd object is updated with the 1st object.
+- Kernel panic occurs due to the previous corrupted free pointer of 1st object + 504 is derefferenced in `get_freepointer()` inlined at `deactivate_slab()`.
