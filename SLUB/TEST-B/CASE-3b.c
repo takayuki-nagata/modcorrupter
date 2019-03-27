@@ -16,7 +16,7 @@ void corrupter_slab_doit(struct kmem_cache *cachep)
 
 	STEP_B1;
 	STEP_B2;
-	STEP_B3c;
+	STEP_B3b;
 }
 
 int corrupter_slab_cleanup(struct kmem_cache *cachep)
