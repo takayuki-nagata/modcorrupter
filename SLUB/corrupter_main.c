@@ -4,9 +4,14 @@
 
 #include <linux/module.h>
 #include <linux/slab.h>
+#include <linux/moduleparam.h>
 #include "corrupter.h"
 
 static struct kmem_cache *corrupter_slab_cachep;
+static char pad = 0;
+
+module_param(pad, byte, 0);
+MODULE_PARM_DESC(pad, "Fill objects with pad in the constuctor");
 
 void corrupter_slab_constructor(void *p)
 {
@@ -14,7 +19,7 @@ void corrupter_slab_constructor(void *p)
 	int i;
 
 	for(i = 0; i < DATA_SIZE; i++){
-		obj->data[i] = 0x88;
+		obj->data[i] = pad;
 	}
 }
 
@@ -24,7 +29,7 @@ static int __init corrupter_init(void)
 						sizeof(struct corrupter_obj),
 						0, (SLAB_RECLAIM_ACCOUNT|
 						   SLAB_MEM_SPREAD),
-						corrupter_slab_constructor);
+						pad ? corrupter_slab_constructor: NULL);
 
 	if(corrupter_slab_cachep == NULL)
 		return -ENOMEM;
