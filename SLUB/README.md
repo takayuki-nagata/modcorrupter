@@ -19,3 +19,6 @@ Refer to [README for TEST-A](TEST-A/README.md)
 
 ## TEST-B: corruption with memory underrun
 Refer to [README for TEST-B](TEST-B/README.md)
+
+# Reference
+<https://events.static.linuxfound.org/sites/events/files/slides/slaballocators.pdf>
